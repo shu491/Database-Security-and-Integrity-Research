@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = "shuann@2003"; // Replace with your MySQL password
+$username = "root"; 
+$password = "shuann@2003"; 
 $dbname = "test_db";
 
 // Connect to MySQL database
@@ -16,19 +16,24 @@ if ($conn->connect_error) {
 $user = $_POST['username'];
 $pass = $_POST['password'];
 
-// Vulnerable SQL query with adjusted parentheses to fix the injection
-$sql = "SELECT * FROM Users WHERE (Username = '$user' OR '$user' = '') AND (Password = '$pass' OR '$pass' = 'anything')";
+// Vulnerable query
+$sql = "SELECT * FROM Users WHERE Username = '$user' AND Password = '$pass'";
 
 // Print the query to debug
-echo "Query: " . $sql . "<br><br>";  // Debugging line
+echo "Query: " . $sql . "<br><br>";
 
 $result = $conn->query($sql);
 
-// Display results
-if ($result->num_rows > 0) {
-    echo "Login successful! Welcome, " . htmlspecialchars($user);
+// Check if the query executed successfully
+if ($result === false) {
+    echo "Error in query execution: " . $conn->error . "<br>";
 } else {
-    echo "Invalid credentials!";
+    // Display results
+    if ($result->num_rows > 0) {
+        echo "Login successful! Welcome, " . htmlspecialchars($user);
+    } else {
+        echo "Invalid credentials!";
+    }
 }
 
 $conn->close();
