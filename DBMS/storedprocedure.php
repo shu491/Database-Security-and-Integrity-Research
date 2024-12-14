@@ -76,7 +76,7 @@ $passwordInput = trim(fgets(STDIN));
 if (detectMaliciousInput($usernameInput) || detectMaliciousInput($passwordInput)) {
     echo "\nSQL Injection Attack Detected. Malicious input blocked.\n";
     echo "Stored Procedure: CALL isAuthenticated('$usernameInput', '$passwordInput');\n";
-    $detectedquery = "SELECT * FROM users WHERE username = '$usernameInput' AND password = '$passwordInput'";
+    $detectedquery = "SELECT * FROM users WHERE username = '$usernameInput' AND password = '$passwordInput';";
     echo "Query: $detectedquery\n";
     
     // Log the malicious attempt
