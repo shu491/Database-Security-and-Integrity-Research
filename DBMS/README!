@@ -1,0 +1,19 @@
+//I cannot use that HTML, so I use back this PHP and MYSQL
+//Below is some description for stored procedure in SQLIA
+SQLIA – Stored Procedure
+The concept of stored procedure inside the SQLIA is something like below: - 
+-	The stored procedure usually is inside a database system (Simple word: A database system got a stored procedure). 
+This stored procedure is a pre-defined set of SQL instructions that the database executes to perform specific tasks. 
+These stored procedures are often used for tasks like checking user credentials or interacting with other parts of the database system. 
+-	However, an attacker can use/exploits the stored procedure to inject malicious input into the parameters used by a stored procedure. 
+The attacker could insert extra comments into the procedure (such as DROP TABLE, SHUTDOWN), and this will cause the database system to behave in an 
+unintended harmful way.
+For example:
+•	A stored procedure for checking user login might be vulnerable to an injection attack if it does not properly sanitize inputs. 
+  If an attacker injects something like '; DROP TABLE users; --, it could result in the procedure executing that extra malicious query, 
+which in this case would delete the "users" table.
+
+In my storedprocedure.php, I demonstarte something like if attackers insert ';DROP TABLE users;--, it will show message 
+that this is malicious input attack, and if I take copy the SQL query to MySQL there, it will DROP
+the TABLE.
+
