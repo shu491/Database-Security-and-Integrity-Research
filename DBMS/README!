@@ -15,4 +15,6 @@ which in this case would delete the "users" table.
 In my storedprocedure.php, I demonstarte something like if attackers insert ';DROP TABLE users;--, it will show message 
 that this is malicious input attack, and if I take copy the SQL query to MySQL there, it will DROP
 the TABLE.
- 
+
+Of course, firstly, you need to create some data inside your database, in README 2! there, I have put mine, and also you need to create procedure by using MYSQL!
+Go through READ 2! oso please tq
