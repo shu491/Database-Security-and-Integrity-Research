@@ -1,0 +1,40 @@
+---------------------------------------------------------------------------
+!!!!!THIS ONE SHOULD EXECUTE IN MYSQL COMMAND!!!!!
+(JUST COPYNPASTE TO MYSQL COMMAND)
+---------------------------------------------------------------------------
+DROP PROCEDURE IF EXISTS isAuthenticated;
+DELIMITER $$
+
+CREATE PROCEDURE isAuthenticated (
+    IN inputUsername VARCHAR(255), 
+    IN inputPassword VARCHAR(255)
+)
+BEGIN
+    -- Dynamically create the query
+    SET @query = CONCAT(
+        'SELECT id, username, password FROM users WHERE username = "', 
+        inputUsername, 
+        '" AND password = "', 
+        inputPassword, 
+        '"'
+    );
+
+    -- Prepare and execute the query
+    PREPARE stmt FROM @query;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END $$
+
+DELIMITER ;
+
+-------------------------------------------------------------------
+SECONDLY, BELOW IS MY DATATYPE AND MY DATA!!!!!!!!!!!!!!
+-------------------------------------------------------------------
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO users (username, password) VALUES ('key', 'key123');
+INSERT INTO users (username, password) VALUES ('test', 'test123');
