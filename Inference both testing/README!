@@ -12,3 +12,8 @@ Time-based SQL Injection (Timing Injection)
 
 https://www.hackingarticles.in/beginner-guide-sql-injection-boolean-based-part-2/
 !!!!!!!!This type of attack as I know is more focusing on guessing or inferencing the structure of database system than extracting the data. Ya, I think it will also extract the secret information but the attackers firstly will guess or infer the structure.
+
+There are two types inside this SQLIA,
+First one is Boolean-based
+- My PHP is something like if attackers inject 'AND 1=1, it will return always TRUE, 
+if 'AND 1=0, it will always return FALSE.
