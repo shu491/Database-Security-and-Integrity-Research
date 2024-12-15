@@ -1,3 +1,4 @@
+//Again I cannot modify the HTML, I used back the PHP and MySQL one
 Boolean-based SQL Injection (Blind Injection)
 -	A type of technique that relies on sending an SQL query to the database system on which the technique forces the application to return different results.
 -	In other words, this type of SQL Injection is a type of SQL Injection Attack that relies on the applications’ response to Boolean (TRUE or FALSE) conditions to extract information from a database system.
