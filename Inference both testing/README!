@@ -17,3 +17,7 @@ There are two types inside this SQLIA,
 First one is Boolean-based
 - My PHP is something like if attackers inject 'AND 1=1, it will return always TRUE, 
 if 'AND 1=0, it will always return FALSE.
+
+The second one is Time-based
+- This one is something like attackers will inject WAITFOR DELAY and then it will delay for a few seconds, 
+in my coding I set to 5 seconds.
