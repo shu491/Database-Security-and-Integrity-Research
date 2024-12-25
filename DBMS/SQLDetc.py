@@ -146,7 +146,7 @@ class SQLInjectionAnalyzer(tk.Tk):
     def __init__(self, db_config: Dict[str, str]):
         super().__init__()
         
-        self.title("SQLDetec")
+        self.title("SQLDetc")
         self.geometry("1200x800")
         
         self.db_monitor = DatabaseMonitor(db_config)
