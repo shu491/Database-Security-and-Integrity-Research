@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root"; 
-$password = ""; 
+$password = ""; //Please use your password for MySQL
 $dbname = "dbms_sqlia";
 
 // Connect to MySQL database
@@ -19,7 +19,7 @@ $pass = $_POST['password'];
 // Capture start time
 $start_time = microtime(true);
 
-// Vulnerable query with potential SQL Injection (tautology-based attack)
+// Vulnerable query with potential SQL Injection
 $sql = "SELECT * FROM Users WHERE Username = '$user' AND Password = '$pass'";
 
 // Print the query to debug
@@ -35,15 +35,12 @@ $execution_time = $end_time - $start_time;
 if ($result === false) {
     echo "Error in query execution: " . $conn->error . "<br>";
 } else {
-    // Display results
     if ($result->num_rows > 0) {
         echo "Login successful! Welcome, " . htmlspecialchars($user) . "<br><br>";
     } else {
         echo "Invalid credentials!";
     }
 }
-
-// Display execution time
 echo "<br>Execution Time: " . number_format($execution_time, 6) . " seconds";
 
 $conn->close();
