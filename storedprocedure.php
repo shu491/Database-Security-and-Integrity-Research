@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root"; 
-$password = "Bohe1209!"; 
+$password = ""; //Please use your password for MySQL
 $dbname = "dbms_sqlia";
 
 // Connect to MySQL database
@@ -23,7 +23,7 @@ try {
     // Capture start time
     $start_time = microtime(true);
 
-    // Vulnerable query with potential SQL Injection (tautology-based attack)
+    // Vulnerable query with potential SQL Injection 
     $sql = "SELECT * FROM users WHERE Username = '$user' AND Password = '$pass'";
     $storedprocedure = "CALL isAuthenticated('$user', '$pass')";
 
@@ -45,7 +45,7 @@ try {
                 }
                 $result->free();
             }
-        } while ($conn->next_result()); // Move to the next query result (if any)
+        } while ($conn->next_result()); 
     } else {
         // Display error if the query fails
         echo "Error in query execution: " . $conn->error . "<br>";
@@ -59,10 +59,8 @@ try {
     echo "<br>Execution Time: " . number_format($execution_time, 6) . " seconds";
 
 } catch (mysqli_sql_exception $e) {
-    // Catch and display MySQL exceptions
     echo "MySQL Error: " . $e->getMessage() . "<br>";
 } catch (Exception $e) {
-    // Catch any general exceptions
     echo "General Error: " . $e->getMessage() . "<br>";
 } finally {
     $conn->close();
