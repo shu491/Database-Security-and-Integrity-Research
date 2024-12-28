@@ -21,10 +21,7 @@ $start_time = microtime(true);
 
 // Vulnerable query with potential SQL Injection
 $sql = "SELECT * FROM Users WHERE Username = '$user' AND Password = '$pass'";
-
-// Print the query to debug
 echo "Query: " . $sql . "<br><br>";
-
 $result = $conn->query($sql);
 
 // Capture end time
