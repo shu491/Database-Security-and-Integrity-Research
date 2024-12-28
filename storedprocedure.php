@@ -27,7 +27,6 @@ try {
     $sql = "SELECT * FROM users WHERE Username = '$user' AND Password = '$pass'";
     $storedprocedure = "CALL isAuthenticated('$user', '$pass')";
 
-    // Print the query to debug
     echo "Query: " . $sql . "<br><br>";
     echo "Stored Procedure: " . $storedprocedure . "<br><br>";
 
@@ -55,7 +54,6 @@ try {
     $end_time = microtime(true);
     $execution_time = $end_time - $start_time;
 
-    // Display execution time
     echo "<br>Execution Time: " . number_format($execution_time, 6) . " seconds";
 
 } catch (mysqli_sql_exception $e) {
